@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components</title>
+    <style>
+        .class-highlight {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        //format: ES6 class syntax
+        class AnotherComponent extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <h2 className="class-highlight">Hello, World from component</h2>
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(<AnotherComponent />, document.getElementById('root'));
+    </script>
+</body>
+</html>
