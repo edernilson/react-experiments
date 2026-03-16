@@ -12,15 +12,24 @@ class Main extends Component {
     return (
       <main>
         <h2>Customers List</h2>
+        {
+        this.state.allCustomers.map((customer, index) => (
+          <div key={index}>{customer.username}</div>
+        ))
+        }
       </main>
     );
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/customers")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ allCustomers: data.customers });
+    fetch("http://localhost:3030/customers")
+      .then((response) => {
+        return(response.json());
+      })
+      .then((users) => {
+        this.setState({ 
+          allCustomers: users 
+        });
       });
   }
 }
