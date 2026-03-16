@@ -1,8 +1,19 @@
 {
-  "customers":[
+  "customers": [
     {
-      "username":"Eder",
-      "password":"1234"
+      "id": "1",
+      "username": "Eder",
+      "password": "1234"
+    },
+    {
+      "id": "2",
+      "username": "Teste",
+      "password": "1234"
+    },
+    {
+      "id": "Teste1",
+      "username": "Teste1",
+      "password": "1234"
     }
   ]
 }
