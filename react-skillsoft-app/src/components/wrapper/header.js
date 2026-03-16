@@ -1,5 +1,6 @@
 import React from "react";
-import logo from '../chart.gif';
+
+import logo from '../../chart.gif';
 
 function Header() {
   return (
