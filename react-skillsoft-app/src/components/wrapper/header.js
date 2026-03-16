@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logo from '../../chart.gif';
 
@@ -9,10 +10,10 @@ function Header() {
       <h1><a href="index.html" >Skillsoft Weight Tracker</a></h1>
       <nav>
         <ul>
-				<li><a href="index.html">home</a></li>
-				<li><a href="enterweight.html">enter weight</a></li>
-				<li><a href="myweights.html">my weight</a></li>
-				<li><a href="teamweights.html">team weights</a></li>
+				<li><Link to="/">Home</Link></li>
+				<li><Link to="/register">Registers</Link></li>
+				<li><Link to="/customers">Custumers</Link></li>
+				<li><Link to="/login">Login</Link></li>
 			</ul>
       </nav>
     </header>
