@@ -36,6 +36,7 @@ function Main() {
       })
       .catch((error) => {
         console.error("Error occured:", error.message);
+        alert("An error occurred while logging in. Please check if service is running and try again.");
       });
   };
 

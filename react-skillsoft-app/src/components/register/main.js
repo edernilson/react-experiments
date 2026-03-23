@@ -29,11 +29,10 @@ class Main extends Component {
       .then((response) => response.json())
       .then((feedback) => {
         console.log("Post successful:", feedback);
-        // Handle successful registration (e.g., redirect to login page)
       })
       .catch((error) => {
         console.error("Error occured:", error.message);
-        // Handle registration error (e.g., show error message)
+        alert("An error occurred while registering. Please check if service is running and try again.");
       });
   }
 
