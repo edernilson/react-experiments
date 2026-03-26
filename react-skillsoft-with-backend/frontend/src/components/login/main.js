@@ -1,20 +1,34 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { Component } from "react";
+import { withRouter } from "../../utils/withRouter";
 
-function Main() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      empName: "",
+      empPass: "",      
+    };
 
-  const handleSubmit = (event) => {
+    this.handleFieldChange = this.handleFieldChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  goHome = () => {
+    this.props.router.navigate("/");
+  };
+
+  handleSubmit(event) {
     event.preventDefault();
     fetch(`http://localhost:8000/login`, {
       method: "POST",
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ empName: username, empPass: password }),
+      body: JSON.stringify({
+        empName: this.state.empName,
+        empPass: this.state.empPass,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -24,7 +38,7 @@ function Main() {
         }
         console.log("Login successful, received token:", data);
         localStorage.setItem("token", data.token);
-        navigate("/teamweights");
+        this.goHome();
       })
       .catch((error) => {
         console.error("Error occured:", error.message);
@@ -32,47 +46,44 @@ function Main() {
           "An error occurred while logging in. Please check if service is running and try again.",
         );
       });
-  };
+  }
 
-  const handleFieldChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "username") {
-      setUsername(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
-  };
+  handleFieldChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
-  return (
-    <main>
-      <h2>Login to participate</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={username}
-            onChange={handleFieldChange}
-            autoComplete="false"
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={handleFieldChange}
-            autoComplete="false"
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </main>
-  );
+  render() {
+    return (
+      <main>
+        <h2>Login to participate</h2>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <label htmlFor="empName">Username:</label>
+            <input
+              type="text"
+              id="empName"
+              name="empName"
+              value={this.state.empName}
+              onChange={this.handleFieldChange}
+              autoComplete="false"
+            />
+          </div>
+          <div>
+            <label htmlFor="empPass">Password:</label>
+            <input
+              type="password"
+              id="empPass"
+              name="empPass"
+              value={this.state.empPass}
+              onChange={this.handleFieldChange}
+              autoComplete="false"
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </main>
+    );
+  }
 }
 
-export default Main;
+export default withRouter(Main);
