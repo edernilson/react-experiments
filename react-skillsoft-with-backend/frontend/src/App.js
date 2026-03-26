@@ -5,6 +5,7 @@ import Home from "./components/home/home";
 import Customers from "./components/customers/customers";
 import Register from "./components/register/register";
 import Login from "./components/login/login";
+import Logout from "./components/logout/logout";
 
 import TeamWeights from "./components/teamweights/teamweights";
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </BrowserRouter>
     </div>
