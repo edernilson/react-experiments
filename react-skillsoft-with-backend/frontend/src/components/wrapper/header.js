@@ -11,8 +11,8 @@ function Header() {
       <nav>
         <ul>
 				<li><Link to="/">Home</Link></li>
-				<li><Link to="/enterweight">Enter Weight</Link></li>
-				<li><Link to="/myweight">My Weight</Link></li>
+				{/* <li><Link to="/enterweight">Enter Weight</Link></li>
+				<li><Link to="/myweight">My Weight</Link></li> */}
 				<li><Link to="/teamweights">Team Weights</Link></li>
 				<li><Link to="/login">Login</Link></li>
 			</ul>
