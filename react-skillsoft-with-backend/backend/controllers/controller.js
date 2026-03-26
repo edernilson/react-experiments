@@ -11,10 +11,17 @@ exports.loginuser = async function (req, res) {
     if (!employee) {
       return res.status(401).send("Invalid credentials");
     }
-
     if (employee.empPass === empPass) {
-      const token = jwt.sign({ id: employee._id }, SECRET_KEY, { expiresIn: "1h" });
-      return res.json({ token });
+    
+      const token = jwt.sign(
+        { 
+          empName: employee.empName,
+          id: employee._id 
+        }, 
+        SECRET_KEY, 
+        { expiresIn: "1h" }
+      );
+      return res.send({ token });
     } else {
       return res.status(401).send("Invalid credentials");
     }

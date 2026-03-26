@@ -8,35 +8,29 @@ function Main() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(
-      `http://localhost:3030/customers?username=${encodeURIComponent(username)}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+    fetch(`http://localhost:8000/login`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-    )
+      body: JSON.stringify({ empName: username, empPass: password }),
+    })
       .then((response) => response.json())
       .then((data) => {
-        const customer = data[0];
-        if (!customer) {
-          console.log("Customer not found");
+        if (!data.token) {
+          alert("Login failed! Please check your credentials and try again.");
           return;
         }
-        if (customer.password !== password) {
-          console.log("Invalid password");
-          return;
-        }
-
-        console.log("Found in db:", customer);
-        localStorage.setItem("validUser", customer.username);
-        navigate("/");
+        console.log("Login successful, received token:", data);
+        localStorage.setItem("token", data.token);
+        navigate("/teamweights");
       })
       .catch((error) => {
         console.error("Error occured:", error.message);
-        alert("An error occurred while logging in. Please check if service is running and try again.");
+        alert(
+          "An error occurred while logging in. Please check if service is running and try again.",
+        );
       });
   };
 
