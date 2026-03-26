@@ -1,0 +1,41 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "username": "Eder",
+      "password": "1234"
+    },
+    {
+      "id": "2",
+      "username": "Teste",
+      "password": "1234"
+    },
+    {
+      "id": "Teste1",
+      "username": "Teste1",
+      "password": "1234"
+    }
+  ],
+  "getemployees": [
+    {
+      "id": "1",
+      "empName": "Eder",
+      "employeeWeights": [
+        {
+          "weightOn": "2025-03-24T00:00:00.000Z",
+          "empWeight": 85
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "empName": "Teste",
+      "employeeWeights": [
+        {
+          "weightOn": "2025-03-24T00:00:00.000Z",
+          "empWeight": 90
+        }
+      ]
+    }
+  ]
+}
